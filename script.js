@@ -1,13 +1,13 @@
 const menuButton = document.querySelector('.menu-button');
 const nav = document.querySelector('#site-nav');
 
-menuButton.addEventListener('click', () => {
+menuButton?.addEventListener('click', () => {
   const open = menuButton.getAttribute('aria-expanded') === 'true';
   menuButton.setAttribute('aria-expanded', String(!open));
   nav.classList.toggle('open', !open);
 });
 
-nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   nav.classList.remove('open');
   menuButton.setAttribute('aria-expanded', 'false');
 }));
@@ -24,9 +24,10 @@ document.querySelectorAll('dialog').forEach(dialog => {
   dialog.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', () => dialog.close()));
 });
 
-document.querySelector('#contact-form').addEventListener('submit', event => {
+document.querySelector('#contact-form')?.addEventListener('submit', event => {
   event.preventDefault();
   event.currentTarget.querySelector('.form-status').textContent = 'Thank you — this demonstration form is ready to connect to your email service.';
 });
 
-document.querySelector('#year').textContent = new Date().getFullYear();
+const year = document.querySelector('#year');
+if (year) year.textContent = new Date().getFullYear();
